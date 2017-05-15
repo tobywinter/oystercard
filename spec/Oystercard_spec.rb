@@ -38,10 +38,6 @@ describe Oystercard do
 
   end
 
-  it { is_expected.to respond_to(:touch_in) }
-  it { is_expected.to respond_to(:touch_out) }
-  it { is_expected.to respond_to(:in_journey?) }
-
   it "Checks if the card is not @in_journey" do
     expect(subject).not_to be_in_journey
   end
@@ -50,11 +46,31 @@ describe Oystercard do
     expect(subject.in_journey).to eq false
   end
 
+  describe "#below_minimum_balance" do
+
+    it "returns true when below @minimum_balace" do
+      expect(subject.below_minimum_balance).to eq true
+    end
+
+    it "returns false when above @minimum_balace" do
+      oystercard = Oystercard.new(30)
+      expect(oystercard.below_minimum_balance).to eq false
+    end
+
+  end
+
+
   describe "#touch_in" do
 
     it "will change in_journey to true" do
-      expect(subject.touch_in).to eq true
+      oystercard = Oystercard.new(30)
+      expect(oystercard.touch_in).to eq true
     end
+
+    it "will raise error 'Insufficient funds' if below minimum balance" do
+      expect {subject.touch_in}.to raise_error("Insufficient funds: Minimum balance - £#{Oystercard::MINIMUM_BALANCE}")
+    end
+
   end
 
   describe "#touch_out" do
