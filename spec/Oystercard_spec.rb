@@ -1,14 +1,13 @@
 require 'Oystercard'
 
-
 describe Oystercard do
 
-  describe '#initialize' do
+  it "responds to #balance" do
+    expect(subject).to respond_to :balance
+  end
 
-    it "has @money attribute/instance variable" do
-      expect(subject.money).to eq @money
-    end
-
+  it "contains @balance attribute" do
+      expect(subject.balance).to eq @balance
   end
 
 end
