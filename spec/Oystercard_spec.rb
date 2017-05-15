@@ -21,7 +21,7 @@ describe Oystercard do
     end
 
     it "raises error 'Exceeds maximum limit' message" do
-      expect {subject.top_up(91)}.to raise_error("Exceeds maximum limit: Balance must not exceed £#{@max_limit}")
+      expect {subject.top_up(91)}.to raise_error("Exceeds maximum limit: Balance must not exceed £#{Oystercard::MAX_LIMIT}")
     end
 
   end
@@ -30,6 +30,13 @@ describe Oystercard do
       expect(subject.max_limit).to eq 90
     end
 
+  describe "#deduct_fare" do
+    it "will deduct fare from balance" do
+      subject.top_up(35)
+      expect(subject.deduct_fare(30)).to eq 5
+    end
+
+  end
 
 
 end

@@ -15,10 +15,15 @@ class Oystercard
     @balance += amount
   end
 
+  def deduct_fare(amount)
+    @balance -= amount
+  end
+
 private
 
   def exceeds_max_limit?(amount)
      @max_limit <= (@balance + amount)
   end
+
 
 end
