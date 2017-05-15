@@ -38,5 +38,17 @@ describe Oystercard do
 
   end
 
+  it { is_expected.to respond_to(:touch_in) }
+  it { is_expected.to respond_to(:touch_out) }
+  it { is_expected.to respond_to(:in_journey?) }
+
+  it "Checks if the card is not @in_journey" do
+    expect(subject).not_to be_in_journey
+  end
+
+  it "has @in_journey instance variable" do
+    expect(subject.in_journey).to eq false
+  end
+
 
 end
