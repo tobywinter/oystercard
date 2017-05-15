@@ -22,4 +22,10 @@ describe Oystercard do
 
   end
 
+    it { is_expected.to respond_to(:max_limit?)}
+
+    it "@max_limit is set to 90 pounds" do
+      expect(subject.max_limit).to eq 90
+    end
+
 end
