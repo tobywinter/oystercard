@@ -6,8 +6,4 @@ class Oystercard
     @balance = balance
   end
 
-  def balance
-   @balance
-  end
-
 end
