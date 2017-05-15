@@ -20,12 +20,16 @@ describe Oystercard do
       expect(subject.top_up(5)).to eq 5
     end
 
-  end
+    it "raises error 'Exceeds maximum limit: Can't top up" do
+      expect {subject.top_up(91)}.to raise_error("Exceeds maximum limit: Can't top up")
+    end
 
-    it { is_expected.to respond_to(:max_limit?)}
+  end
 
     it "@max_limit is set to 90 pounds" do
       expect(subject.max_limit).to eq 90
     end
+
+
 
 end
