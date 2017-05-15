@@ -32,8 +32,8 @@ describe Oystercard do
 
   describe "#deduct_fare" do
     it "will deduct fare from balance" do
-      subject.top_up(35)
-      expect(subject.deduct_fare(30)).to eq 5
+      oystercard = Oystercard.new(35)
+      expect(oystercard.deduct_fare(30)).to eq 5
     end
 
   end
