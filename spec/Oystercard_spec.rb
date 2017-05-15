@@ -20,8 +20,8 @@ describe Oystercard do
       expect(subject.top_up(5)).to eq 5
     end
 
-    it "raises error 'Exceeds maximum limit: Can't top up" do
-      expect {subject.top_up(91)}.to raise_error("Exceeds maximum limit: Can't top up")
+    it "raises error 'Exceeds maximum limit' message" do
+      expect {subject.top_up(91)}.to raise_error("Exceeds maximum limit: Balance must not exceed £#{@max_limit}")
     end
 
   end
