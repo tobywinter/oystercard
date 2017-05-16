@@ -34,8 +34,6 @@ describe Oystercard do
       expect(subject.max_limit).to eq 90
     end
 
-  end
-
   it "Checks if the card is not @in_journey" do
     expect(subject).not_to be_in_journey
   end
@@ -59,14 +57,20 @@ describe Oystercard do
 
 
   describe "#touch_in" do
+    let(:station) {double(:station)}
 
     it "will change in_journey to true" do
       oystercard = Oystercard.new(30)
-      expect(oystercard.touch_in).to eq true
+      expect(oystercard.touch_in(station)).to eq true
     end
 
     it "will raise error 'Insufficient funds' if below minimum balance" do
-      expect {subject.touch_in}.to raise_error("Insufficient funds: Minimum balance - £#{Oystercard::MINIMUM_BALANCE}")
+      expect {subject.touch_in(station)}.to raise_error("Insufficient funds: Minimum balance - £#{Oystercard::MINIMUM_BALANCE}")
+    end
+
+    it "will save station in @entry_station" do
+      subject.top_up(20)
+      expect {subject.touch_in(station)}.to change{subject.entry_station}.to eq(station)
     end
 
   end
@@ -81,6 +85,7 @@ describe Oystercard do
     it 'deducts fare from balance upon touch out' do
       expect {subject.touch_out(fare)}.to change{subject.balance}.by(-fare)
     end
+
   end
 
 
