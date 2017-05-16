@@ -34,12 +34,6 @@ describe Oystercard do
       expect(subject.max_limit).to eq 90
     end
 
-  describe "#deduct_fare" do
-    it "will deduct fare from balance" do
-      oystercard = Oystercard.new(35)
-      expect(oystercard.deduct_fare(30)).to eq 5
-    end
-
   end
 
   it "Checks if the card is not @in_journey" do

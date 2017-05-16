@@ -10,16 +10,12 @@ class Oystercard
     @balance = balance
     @max_limit = MAX_LIMIT
     @in_journey = false
-    @entry_station = nil 
+    @entry_station = nil
   end
 
   def top_up(amount)
     raise "Exceeds maximum limit: Balance must not exceed £#{@max_limit}" if exceeds_max_limit?(amount)
     @balance += amount
-  end
-
-  def deduct_fare(amount)
-    @balance -= amount
   end
 
   def touch_in
@@ -46,5 +42,8 @@ private
      @max_limit <= (@balance + amount)
   end
 
+  def deduct_fare(amount)
+    @balance -= amount
+  end
 
 end
