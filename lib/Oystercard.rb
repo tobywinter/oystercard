@@ -26,7 +26,8 @@ class Oystercard
     @in_journey = true
   end
 
-  def touch_out
+  def touch_out(fare)
+    deduct_fare(fare)
     @in_journey = false
   end
 

@@ -74,9 +74,14 @@ describe Oystercard do
   end
 
   describe "#touch_out" do
+    let(:fare) {fare = 1}
 
     it "will change in_journey to false" do
-      expect(subject.touch_out).to eq false
+      expect(subject.touch_out(fare)).to eq false
+    end
+
+    it 'deducts fare from balance upon touch out' do
+      expect {subject.touch_out(fare)}.to change{subject.balance}.by(-fare)
     end
   end
 
