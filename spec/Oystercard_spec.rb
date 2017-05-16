@@ -14,6 +14,17 @@ describe Oystercard do
     expect(subject).to respond_to :entry_station
   end
 
+  it 'responds to journeys' do
+    expect(subject).to respond_to :journeys
+  end
+
+  context 'recording journey' do
+    it 'has an empty list of journeys by default' do
+      expect(subject.journeys).to be_empty 
+    end
+
+  end
+
   describe '#top_up' do
 
     it "allows user to top up balance" do
