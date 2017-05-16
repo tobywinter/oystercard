@@ -10,6 +10,10 @@ describe Oystercard do
       expect(subject.balance).to eq 0
   end
 
+  it 'responds to entry_station' do
+    expect(subject).to respond_to :entry_station
+  end
+
   describe '#top_up' do
 
     it "allows user to top up balance" do
@@ -84,5 +88,7 @@ describe Oystercard do
       expect {subject.touch_out(fare)}.to change{subject.balance}.by(-fare)
     end
   end
+
+
 
 end
