@@ -19,8 +19,16 @@ describe Oystercard do
   end
 
   context 'recording journey' do
+    let (:entry_station) {double(:station)}
+    let (:exit_station)  {double(:station)}
+    before {subject.top_up(20)}
+
     it 'has an empty list of journeys by default' do
-      expect(subject.journeys).to be_empty 
+      expect(subject.journeys).to be_empty
+    end
+
+    it 'checks that touching in saves entry station' do
+      expect {subject.touch_in(entry_station)}.to change{subject.journeys}.to eq([{entry_station: entry_station}])
     end
 
   end
