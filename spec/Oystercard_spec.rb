@@ -31,6 +31,12 @@ describe Oystercard do
       expect {subject.touch_in(entry_station)}.to change{subject.journeys}.to eq([{entry_station: entry_station}])
     end
 
+    it 'checks that touching out saves exit station' do
+      subject.touch_in(entry_station)
+      subject.touch_out(exit_station)
+      expect(subject.journeys).to eq([{entry_station: entry_station, exit_station: exit_station}])
+    end
+
   end
 
   describe '#top_up' do
@@ -89,9 +95,14 @@ describe Oystercard do
 
   describe "#touch_out" do
     let(:fare) {fare = 1}
+    let(:exit_station) {double(:station)}
+    let(:entry_station) {double(:station)}
+    before {subject.top_up(20)}
+
 
     it 'deducts fare from balance upon touch out' do
-      expect {subject.touch_out(fare)}.to change{subject.balance}.by(-fare)
+      subject.touch_in(entry_station)
+      expect {subject.touch_out(fare,exit_station)}.to change{subject.balance}.by(-fare)
     end
 
   end
