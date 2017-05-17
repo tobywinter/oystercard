@@ -1,5 +1,6 @@
+# Oystercard class to store balance and journey information
+# along with top up, touch in, and touch out.
 class Oystercard
-
   attr_reader :balance, :max_limit, :in_journey, :entry_station, :journeys
 
   MAX_LIMIT = 90
@@ -15,13 +16,14 @@ class Oystercard
   end
 
   def top_up(amount)
-    raise "Exceeds maximum limit: Balance must not exceed £#{@max_limit}" if exceeds_max_limit?(amount)
+    raise "Exceeds maximum limit: £#{@max_limit}" if exceeds_max_limit?(amount)
     @balance += amount
   end
 
   def touch_in(station)
-    raise "Insufficient funds: Minimum balance - £#{MINIMUM_BALANCE}" if below_minimum_balance
-    @journeys << {entry_station: station}
+    top_up_message = "Insufficient funds: Minimum balance - £#{MINIMUM_BALANCE}"
+    raise top_up_message if below_minimum_balance
+    @journeys << { entry_station: station }
     @entry_station = station
   end
 
@@ -39,14 +41,13 @@ class Oystercard
     MINIMUM_BALANCE > @balance
   end
 
-private
+  private
 
   def exceeds_max_limit?(amount)
-     @max_limit <= (@balance + amount)
+    @max_limit <= (@balance + amount)
   end
 
   def deduct_fare(amount)
     @balance -= amount
   end
-
 end

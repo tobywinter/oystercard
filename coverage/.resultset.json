@@ -1,12 +1,13 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/tjhasler-winter/Projects/oystercard/spec/Oystercard_spec.rb": [
+      "/Users/tjhasler-winter/Projects/oystercard/spec/oystercard_spec.rb": [
         1,
         null,
         1,
         6,
         3,
+        null,
         18,
         3,
         18,
@@ -30,8 +31,6 @@
         null,
         null,
         1,
-        null,
-        null,
         1,
         1,
         null,
@@ -47,9 +46,7 @@
         null,
         null,
         null,
-        null,
         1,
-        null,
         1,
         1,
         null,
@@ -58,12 +55,12 @@
         1,
         null,
         null,
+        1,
         1,
         2,
         null,
         null,
         null,
-        null,
         1,
         1,
         null,
@@ -75,7 +72,6 @@
         null,
         null,
         1,
-        null,
         1,
         1,
         null,
@@ -86,9 +82,8 @@
         null,
         null,
         null,
-        null,
         1,
-        null,
+        1,
         1,
         2,
         null,
@@ -98,23 +93,18 @@
         null,
         null,
         null,
-        null,
         1,
-        null,
         1,
         1,
         4,
-        null,
-        null,
-        null,
-        null,
         null,
         null,
         null
       ],
-      "/Users/tjhasler-winter/Projects/oystercard/lib/Oystercard.rb": [
-        1,
+      "/Users/tjhasler-winter/Projects/oystercard/lib/oystercard.rb": [
         null,
+        null,
+        1,
         1,
         null,
         1,
@@ -135,6 +125,7 @@
         null,
         null,
         1,
+        5,
         5,
         4,
         4,
@@ -163,7 +154,6 @@
         1,
         2,
         null,
-        null,
         null
       ],
       "/Users/tjhasler-winter/Projects/oystercard/spec/station_spec.rb": [
@@ -171,8 +161,6 @@
         null,
         1,
         3,
-        null,
-        null,
         null,
         1,
         1,
@@ -185,17 +173,15 @@
       ],
       "/Users/tjhasler-winter/Projects/oystercard/lib/station.rb": [
         1,
-        null,
         1,
         null,
         1,
         2,
         2,
-        null,
         null,
         null
       ]
     },
-    "timestamp": 1494949444
+    "timestamp": 1494981466
   }
 }
